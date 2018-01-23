@@ -7,7 +7,7 @@ int main(int argc, char *argv[]){
     if(argc==1){
         fp=fopen(argv[0],"r");
         if(fp==NULL){
-            printf("cat: %s: No such file or directory",argv[0]);
+            printf("cat: %s: No such file or directory\n",argv[0]);
             return -1;
         }
         while(fgets(line, sizeof(line),fp)!=NULL){
@@ -20,7 +20,7 @@ int main(int argc, char *argv[]){
 
             fp=fopen(argv[1],"r");
             if(fp==NULL){
-                printf("cat: %s: No such file or directory",argv[1]);
+                printf("cat: %s: No such file or directory\n",argv[1]);
                 return -1;
             }
             int counter=1;
@@ -36,7 +36,7 @@ int main(int argc, char *argv[]){
         else if(argv[0][1]=='A'){
             fp=fopen(argv[1],"r");
             if(fp==NULL){
-                printf("cat: %s: No such file or directory",argv[1]);
+                printf("cat: %s: No such file or directory\n",argv[1]);
                 return -1;
             }
             int counter=1;
@@ -52,7 +52,7 @@ int main(int argc, char *argv[]){
         else{
             fp=fopen(argv[1],"r");
             if(fp==NULL){
-                printf("cat: %s: No such file or directory",argv[1]);
+                printf("cat: %s: No such file or directory\n",argv[1]);
                 return -1;
             }
             int counter=1;
@@ -69,7 +69,7 @@ int main(int argc, char *argv[]){
     else if(argc==3){
         fp=fopen(argv[2],"r");
         if(fp==NULL){
-            printf("cat: %s: No such file or directory",argv[2]);
+            printf("cat: %s: No such file or directory\n",argv[2]);
             return -1;
         }
         int counter=1;

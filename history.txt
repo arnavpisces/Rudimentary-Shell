@@ -1,0 +1,33 @@
+1 mkdir yolo
+2 cd yolo
+3 ls
+4 cd ..
+5 ls
+6 echo hello arnav
+7 pwd
+8 history
+9 cat main.c
+10 date
+11 rm yolo
+12 history
+13 exit
+14 history
+15 exit
+16 pwd
+17 ls
+18 exit
+19 ls
+20 cat main.c
+21 ls
+22 history
+23 clear
+24 ls
+25 date
+26 ls
+27 cat -A main.c
+28 cat -i main.c
+29 cat -n main.c
+30 clear
+31 history
+32 clear
+33 exit

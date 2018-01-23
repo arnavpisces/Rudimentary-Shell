@@ -10,7 +10,7 @@ int main(int argc, char *argv[]){
     if(argc==1){
 //        showdir(argv[0],'y');
         if(remove(argv[0])==0){
-            printf("Deleted Successfully");
+//            printf("Deleted Successfully");
         }
         else{
             printf("Unable to delete the file");
@@ -27,14 +27,14 @@ int main(int argc, char *argv[]){
                     scanf("%c",&ask);
                     if(ask=='y'){
                         remove(argv[1]);
-                        printf("Deleted Successfully");
+                        printf("Deleted Successfully\n");
                     }
                     else{
                         return 0;
                     }
                 }
                 else {
-                    printf("rm: cannot remove ‘%s’: No such file or directory", argv[1]);
+                    printf("rm: cannot remove ‘%s’: No such file or directory\n", argv[1]);
                 }
             }
             else{
@@ -58,7 +58,7 @@ int main(int argc, char *argv[]){
                 }
             }
             else {
-                printf("rm: cannot remove ‘%s’: No such file or directory", argv[1]);
+                printf("rm: cannot remove ‘%s’: No such file or directory\n", argv[1]);
             }
         }
         else{
@@ -70,14 +70,14 @@ int main(int argc, char *argv[]){
                 scanf("%c",&ask);
                 if(ask=='y'){
                     remove(argv[1]);
-                    printf("Deleted Successfully");
+                    printf("Deleted Successfully\n");
                 }
                 else{
                     return 0;
                 }
             }
             else {
-                printf("rm: cannot remove ‘%s’: No such file or directory", argv[1]);
+                printf("rm: cannot remove ‘%s’: No such file or directory\n", argv[1]);
             }
         }
     }
@@ -90,14 +90,14 @@ int main(int argc, char *argv[]){
             scanf("%c",&ask);
             if(ask=='y'){
                 remove(argv[2]);
-                printf("Deleted Successfully");
+                printf("Deleted Successfully\n");
             }
             else{
                 return 0;
             }
         }
         else {
-            printf("rm: cannot remove ‘%s’: No such file or directory", argv[2]);
+            printf("rm: cannot remove ‘%s’: No such file or directory\n", argv[2]);
         }
     }
     return 0;

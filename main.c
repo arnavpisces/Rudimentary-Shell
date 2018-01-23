@@ -11,7 +11,7 @@
 //All internal commands
 void pwd();
 void echo(char**,int);
-void echoplus();
+void echoplus(char**,int);
 void history();
 void exitcom();
 void cd(char**);
@@ -21,7 +21,7 @@ void cdDesktop();
 extern void ls();
 
 int main() {
-    printf("Rudimentary C Shell, Proceed with caution\n");
+    printf("###~~~Rudimentary C Shell (AK BASH), Proceed with caution~~~###\n");
     int historycounter=1;
     char *lspath=realpath("./ls",NULL);
     char *datepath=realpath("./date",NULL);
@@ -35,7 +35,7 @@ int main() {
     fclose(histcount);
 //    histcount=fopen("histcount.txt","w");
     while(1) {
-        printf("\n>>>");
+        printf(">>>");
         char inputcom[1000];
         char first[100]; //first is the command that i am calling
         char *commands[100]={0}; //this is basically an array of words (pointer of array)
@@ -51,7 +51,7 @@ int main() {
 //            printf("%s\n", tokenPtr);
             if (flag == 'y') {
                 strcpy(first,tokenPtr);
-                printf("%s\n",first);
+//                printf("%s\n",first);
                 flag = 'n';
             } else {
 //                commands[i]=(char*)malloc(100);
@@ -67,18 +67,19 @@ int main() {
 //        exit(0);
 //        printf("%s %s", first, commands[0]);
         //here I am start calling the functions using what is in first
-        printf("~~~HEREGOES~~~\n");
+//        printf("~~~HEREGOES~~~\n");
         if (!strcmp(first,"pwd")) {
 //            printf("asdfsdF");
 
             pwd();
+            printf("\n");
             continue;
         }
             //here i have to fix the porblem when i give only one argument so command[1] doesnt exist
         else if(!strcmp(first,"echo")){
 //            printf("asdfsdF\n");
             if(!strcmp(commands[0],"-n")||!strcmp(commands[0],"-E")){
-                echoplus(commands);
+                echoplus(commands,i);
             }
             else {
 //                printf("SADfasdf\n");
@@ -91,6 +92,7 @@ int main() {
             histcount=fopen("histcount.txt","w");
             fprintf(histcount,"%d",historycounter);
             fclose(history);
+            printf("\n");
             exitcom();
         }
         else if(!strcmp(first,"cd")){
@@ -100,6 +102,7 @@ int main() {
             else{
                 cd(commands);
             }
+            printf("\n");
         }
 
         else if(!strcmp(first,"history")){
@@ -111,7 +114,7 @@ int main() {
             }
             fclose(history);
             history=fopen("history.txt","a");
-
+            printf("\n");
         }
         else if(!strcmp(first,"ls") || (!strcmp(first,"cat") || (!strcmp(first,"date")) || (!strcmp(first,"rm")) || (!strcmp(first,"mkdir")))){
             pid_t pid=fork();
@@ -149,26 +152,31 @@ int main() {
                         printf("ERROR\n");
                         printf("%d",errno);
                     }
+                    printf("\n");
                 }
                 else if(!strcmp(first,"date")){
                     if(execv(datepath,commands)==-1){
                         printf("ERROR\n");
                     }
+                    printf("\n");
                 }
                 else if(!strcmp(first,"cat")){
                     if(execv(catpath,commands)==-1){
                         printf("ERROR\n");
                     }
+                    printf("\n");
                 }
                 else if(!strcmp(first,"rm")){
                     if(execv(rmpath,commands)==-1){
                         printf("ERROR\n");
                     }
+                    printf("\n");
                 }
                 else if(!strcmp(first,"mkdir")){
                     if(execv(mkdirpath,commands)==-1){
                         printf(("ERROR\n"));
                     }
+                    printf("\n");
                 }
             }
         }
@@ -192,10 +200,17 @@ void echo(char *commands[100],int i){
     while(k++<i) {
         printf("%s ", *commands++);
     }
+    printf("\n");
 //    *commands=NULL;
 }
-void echoplus(){
-    printf("Asdf");
+void echoplus(char *commands[100],int i){
+    if(commands[0][1]=='n'){
+        int k=0;
+        while(k++<i) {
+            printf("%s ", *commands++);
+        }
+    }
+
 }
 
 void exitcom(){
