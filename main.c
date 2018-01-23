@@ -22,11 +22,18 @@ extern void ls();
 
 int main() {
     printf("Rudimentary C Shell, Proceed with caution\n");
+    int historycounter=1;
     char *lspath=realpath("./ls",NULL);
     char *datepath=realpath("./date",NULL);
     char *catpath=realpath("./cat",NULL);
     char *rmpath=realpath("./rm",NULL);
     char *mkdirpath=realpath("./mkdir",NULL);
+    FILE *history,*histcount;
+    history=fopen("history.txt","a");
+    histcount=fopen("histcount.txt","r");
+    fscanf(histcount,"%d",&historycounter);
+    fclose(histcount);
+//    histcount=fopen("histcount.txt","w");
     while(1) {
         printf("\n>>>");
         char inputcom[1000];
@@ -37,6 +44,7 @@ int main() {
         int i = 0;
         char flag = 'y';
         fgets(inputcom, 1000, stdin);
+        fprintf(history,"%d %s",historycounter++,inputcom);
         char *tokenPtr = strtok(inputcom, " \n");
         while (tokenPtr != NULL) {
 
@@ -80,6 +88,9 @@ int main() {
         }
         else if(!strcmp(first,"exit")){
 //          printf("asdfsdF\n");
+            histcount=fopen("histcount.txt","w");
+            fprintf(histcount,"%d",historycounter);
+            fclose(history);
             exitcom();
         }
         else if(!strcmp(first,"cd")){
@@ -89,6 +100,18 @@ int main() {
             else{
                 cd(commands);
             }
+        }
+
+        else if(!strcmp(first,"history")){
+            fclose(history);
+            history=fopen("history.txt","r");
+            char histline[1000];
+            while(fgets(histline, sizeof(histline),history)){
+                printf("%s",histline);
+            }
+            fclose(history);
+            history=fopen("history.txt","a");
+
         }
         else if(!strcmp(first,"ls") || (!strcmp(first,"cat") || (!strcmp(first,"date")) || (!strcmp(first,"rm")) || (!strcmp(first,"mkdir")))){
             pid_t pid=fork();
