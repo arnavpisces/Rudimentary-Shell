@@ -1,0 +1,24 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+D:/Desktop/OS Assignment 0/main.c
+stdio.h
+-
+unistd.h
+-
+string.h
+-
+malloc.h
+-
+stdlib.h
+-
+sys/types.h
+-
+errno.h
+-
+

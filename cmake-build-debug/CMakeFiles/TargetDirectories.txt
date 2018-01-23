@@ -1,0 +1,3 @@
+D:/Desktop/OS Assignment 0/cmake-build-debug/CMakeFiles/OS_Assignment_0.dir
+D:/Desktop/OS Assignment 0/cmake-build-debug/CMakeFiles/edit_cache.dir
+D:/Desktop/OS Assignment 0/cmake-build-debug/CMakeFiles/rebuild_cache.dir
